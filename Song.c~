@@ -1,0 +1,19 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct Song{
+  char name[256];
+  char artist[256];
+  struct Song *next;
+} Song;
+
+int main(){
+  Song *s1 = (Song*)malloc(sizeof(Song));
+  char n = "elysong";
+  char a = "ely sandine";
+  strcopy(s1->name,n);
+  strcopy(s1->artist, a);
+  s1->next = 0;
+  printf("Song s1\nName: %s\nArtist: %s\n",s1->name,s1->artist);
+  return 0;
+}
