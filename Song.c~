@@ -1,19 +1,23 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
-typedef struct Song{
+typedef struct node{
   char name[256];
   char artist[256];
   struct Song *next;
-} Song;
+} node;
+
+struct node* insert_front(struct node* front, char* name, char* artist){
+  struct node* n = (struct node*)malloc(sizeof(struct node));
+  strcpy(n->name, name);
+  (*n).artist=artist;
+  return n;
+}
 
 int main(){
-  Song *s1 = (Song*)malloc(sizeof(Song));
-  char n = "elysong";
-  char a = "ely sandine";
-  strcopy(s1->name,n);
-  strcopy(s1->artist, a);
-  s1->next = 0;
-  printf("Song s1\nName: %s\nArtist: %s\n",s1->name,s1->artist);
+  node *s1 = (node*)malloc(sizeof(Song));
+  s1=insert_front(s1, "elysong", "elyname");
+  printf("Node s1\nName: %s\nArtist: %s\n",s1->name,s1->artist);
   return 0;
 }
