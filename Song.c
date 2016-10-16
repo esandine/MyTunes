@@ -43,13 +43,26 @@ struct node* findSong(struct node* front, char* name){
   }
   return 0;
 }
+
+struct node* findArtist(struct node* front, char* artist){
+  while(front && strcmp(front->artist, artist)){
+    front=front->next;
+  }
+  if(front){
+    return front;
+  }
+  return 0;
+}
+
 int main(){
   node* s1 = 0;
   s1=insert_front(s1, "elysong", "elyname");
   s1=insert_front(s1, "alysong2", "elyname2");
-  s1=insert(s1, "blysong2", "elyname2");
-  s1=insert(s1, "zlysong2", "elyname2");
-  s1=insert(s1, "clysong2", "elyname2");
+  s1=insert(s1, "blysong2", "elyname3");
+  s1=insert(s1, "zlysong2", "elyname4");
+  s1=insert(s1, "clysong2", "elyname5");
   print_list(s1);
+  printf("findSong(s1,blysong2)->name: %s\n\n",findSong(s1,"blysong2")->name);
+  printf("findSong(s1,elyname4)->name: %s\n\n",findArtist(s1,"elyname4")->name);
   return 0;
 }
