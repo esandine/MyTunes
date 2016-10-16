@@ -34,6 +34,15 @@ struct node* insert(struct node* front, char* name, char* artist){
   return front;
 }
 
+struct node* findSong(struct node* front, char* name){
+  while(front && strcmp(front->name, name)){
+    front=front->next;
+  }
+  if(front){
+    return front;
+  }
+  return 0;
+}
 int main(){
   node* s1 = 0;
   s1=insert_front(s1, "elysong", "elyname");
