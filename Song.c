@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
 
 typedef struct node{
   char name[256];
@@ -8,11 +9,11 @@ typedef struct node{
   struct node *next;
 } node;
 
-char print_node(struct node* n){
+char print_node(node* n){
     printf("Name: %s\nArtist: %s\n\n", n->name, n->artist);
     return 1;
 }
-char print_list(struct node* n){
+char print_list(node* n){
   if(n){
     print_node(n);
     return print_list(n->next);
@@ -20,15 +21,15 @@ char print_list(struct node* n){
   return 1;
 }
 
-struct node* insert_front(struct node* front, char* name, char* artist){
-  struct node* n = (struct node*)malloc(sizeof(struct node));
+node* insert_front(node* front, char* name, char* artist){
+  node* n = (node*)malloc(sizeof(node));
   strcpy(n->name, name);
   strcpy(n->artist, artist);
   n->next=front;
   return n;
 }
 
-struct node* insert(struct node* front, char* name, char* artist){
+node* insert(node* front, char* name, char* artist){
   node* i = front;
   while((i -> next) && *(i->next->name)<*name){
     i=i->next;
@@ -37,7 +38,7 @@ struct node* insert(struct node* front, char* name, char* artist){
   return front;
 }
 
-struct node* findSong(struct node* front, char* name){
+node* findSong(node* front, char* name){
   while(front && strcmp(front->name, name)){
     front=front->next;
   }
@@ -47,7 +48,7 @@ struct node* findSong(struct node* front, char* name){
   return 0;
 }
 
-struct node* findArtist(struct node* front, char* artist){
+node* findArtist(node* front, char* artist){
   while(front && strcmp(front->artist, artist)){
     front=front->next;
   }
@@ -66,8 +67,9 @@ int len(node* front){
   return i;
 }
 
-struct node* random_node(node* front){
+node* random_node(node* front){
   int i = rand()%len(front);
+  printf("i: %d\n", i);
   while(i){
     front=front->next;
     i--;
@@ -75,7 +77,7 @@ struct node* random_node(node* front){
   return front;
 }
 
-char remove_node(node* front, node* rem){
+node* remove_node(node* front, node* rem){
   if(front==rem){
     front=front->next;
     free(rem);
@@ -86,9 +88,16 @@ char remove_node(node* front, node* rem){
     front->next=rem->next;
     free(rem);
   }
-  return 1;
+  return rem;
 }
+
+/*node* remove_list(node* front){
+  wh){
+  }
+  return front;
+  }*/
 int main(){
+  srand(time(NULL));
   node* s1 = 0;
   s1=insert_front(s1, "elysong", "elyname");
   s1=insert_front(s1, "alysong2", "elyname2");
@@ -113,3 +122,5 @@ int main(){
   
   return 0;
 }
+
+
