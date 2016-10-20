@@ -2,12 +2,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
+#include "Song.h"
 
-typedef struct node{
-  char name[256];
-  char artist[256];
-  struct node *next;
-} node;
 
 char print_node(node* n){
     printf("Name: %s\nArtist: %s\n\n", n->name, n->artist);
@@ -96,7 +92,7 @@ node* remove_node(node* front, node* rem){
   }
   return front;
   }*/
-int main(){
+/*int main(){
   srand(time(NULL));
   node* s1 = 0;
   s1=insert_front(s1, "elysong", "elyname");
@@ -121,6 +117,7 @@ int main(){
 
   
   return 0;
-}
+  }*/
+
 
 

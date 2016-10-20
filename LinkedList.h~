@@ -1,0 +1,5 @@
+#ifndef LINKEDLIST_H
+#include "Song.h"
+
+#define LINKEDLIST_H
+#endif
