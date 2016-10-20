@@ -1,2 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "Playlist.h"
+
+node* add_song(char* name, char* artist){
+  printf("Playlist: %d\nPlaylist+*name-97 %d\n",Playlist, Playlist+*name-97);
+  return insert(Playlist+*name-97, name, artist);
+}
+char print_letter(char letter){
+  return print_list(Playlist+letter-97);
+}

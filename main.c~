@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 #include "Song.h"
+#include "Playlist.h"
 
 int main(){
   srand(time(0));
@@ -23,5 +25,8 @@ int main(){
   remove_node(s1, findSong(s1, "blysong2"));
   printf("remove_node(s1, findSong(s1, blysong2))\n");
   print_list(s1);
+  printf("\n\n==================Playlist Testing========================\n\n");
+  add_song("elysong", "elyartist");
+  print_letter('a');
   return 0;
 }

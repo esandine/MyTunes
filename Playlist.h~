@@ -2,7 +2,7 @@
 #include "Song.h"
 #define PLAYLIST
 node Playlist[26];
-node* add_song(char* name, char* artist);
+char add_song(char* name, char* artist);
 node* find_song(char* name);
 node* find_song(char* artist);
 char print_letter(char letter);
