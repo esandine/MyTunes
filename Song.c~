@@ -5,8 +5,13 @@
 
 
 char print_node(node* n){
+  if(n){
     printf("Name: %s\nArtist: %s\n\n", n->name, n->artist);
     return 1;
+  }else{
+    printf("No node found\n");
+    return 0;
+  }
 }
 char print_list(node* n){
   if(n){
@@ -21,13 +26,13 @@ node* insert_front(node* front, char* name, char* artist){
   strcpy(n->name, name);
   strcpy(n->artist, artist);
   n->next=front;
+
   return n;
 }
 
 node* insert(node* front, char* name, char* artist){
   node* i = front;
   if(i==NULL){
-    printf("test\n");
     insert_front(front, name, artist);
   }
   while((i -> next) && *(i->next->name)<*name){
@@ -67,12 +72,16 @@ int len(node* front){
 }
 
 node* random_node(node* front){
-  int i = rand()%len(front);
-  while(i){
-    front=front->next;
-    i--;
+  if(front){
+    int i = rand()%len(front);
+    while(i){
+      front=front->next;
+      i--;
+    }
+    return front;
+  }else{
+    return 0;
   }
-  return front;
 }
 
 node* remove_node(node* front, node* rem){

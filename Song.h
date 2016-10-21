@@ -14,5 +14,6 @@ node* findArtist(node* front, char* artist);
 int len(node* front);
 node* random_node(node* front);
 node* remove_node(node* front, node* rem);
+node* remove_list(node* front);
 #endif
 

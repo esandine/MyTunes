@@ -95,14 +95,18 @@ node* remove_node(node* front, node* rem){
     front->next=rem->next;
     free(rem);
   }
-  return rem;
+  return front;
 }
 
-/*node* remove_list(node* front){
-  wh){
+node* remove_list(node* front){
+  while(front){
+    front=remove_node(front,front);
   }
   return front;
-  }*/
+}
+
+
+
 /*int main(){
   srand(time(NULL));
   node* s1 = 0;

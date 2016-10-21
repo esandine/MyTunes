@@ -22,8 +22,11 @@ int main(){
   print_node(random_node(s1));
   printf("random_node(s1): \n");
   print_node(random_node(s1));
-  remove_node(s1, findSong(s1, "blysong2"));
-  printf("remove_node(s1, findSong(s1, blysong2))\n");
+  s1=remove_node(s1, findSong(s1, "alysong2"));
+  printf("remove_node(s1, findSong(s1, alysong2))\n");
+  print_list(s1);
+  s1=remove_list(s1);
+  printf("Should be nothing:");
   print_list(s1);
   printf("\n\n==================Playlist Testing========================\n\n");
   delete_playlist();
