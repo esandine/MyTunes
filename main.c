@@ -44,5 +44,7 @@ int main(){
   shuffle(10);
   delete("elysong2");
   print_letter('e');
+  delete_playlist();
+  print_letter('e');
   return 0;
 }

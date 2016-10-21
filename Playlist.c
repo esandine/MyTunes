@@ -6,13 +6,18 @@
 char delete_playlist(){
   int i;
   for(i=0;i<26;i++){
+    remove_list((Playlist+i)->next);
     strcpy(Playlist[i].name,"Skip");
     Playlist[i].next=NULL;
-}
-
+    Nums[i]=0;
+  }
+  total=0;
   return 0;
 }
+
 node* add_song(char* name, char* artist){
+  Nums[*name-97]+=1;
+  total+=1;
   return insert((Playlist+*name-97), name, artist);
 }
 node* find_song(char* name){
@@ -48,15 +53,23 @@ char print_artist(char* artist){
   return 1;
 }
 char shuffle(char songs){
+  int randnum;
+  char letter;
   while(songs){
-    int letter = rand()%26;//assumes roughly equal amount of songs each letter
-    print_node(random_node((Playlist+letter)->next));
+    randnum = rand()%total;
+    letter = 0;
+    while(randnum>Nums[letter]){
+      randnum-=Nums[letter];
+      letter++;
+    }
+    print_node(random_node(Playlist[letter].next));
     songs--;
   }
   return 0;
 }
 char delete(char* name){
+  total--;
+  Nums[*name-97]-=1;
   remove_node(&Playlist[*name-97],find_song(name));
   return 0;
 }
-
