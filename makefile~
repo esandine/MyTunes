@@ -1,4 +1,4 @@
-strtest: LinkedList.c
-	gcc LinkedList.c
+strtest: Song.c
+	gcc main.c Song.c Playlist.c -v
 run:
 	./a.out

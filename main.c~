@@ -26,7 +26,20 @@ int main(){
   printf("remove_node(s1, findSong(s1, blysong2))\n");
   print_list(s1);
   printf("\n\n==================Playlist Testing========================\n\n");
+  delete_playlist();
+  printf("TEST\n");
+
   add_song("elysong", "elyartist");
-  print_letter('a');
+  printf("test\n");
+  print_letter('e');
+  add_song("elysong2","elyartist2");
+  add_song("elysong3","elyartist2");
+  add_song("alysong4","elyartist2");
+  print_node(find_song("elysong2"));
+  print_node(find_artist("elyartist2"));
+  printf("Find artist:\n");
+  print_artist("elyartist2");
+  printNums();
+  shuffle(10);
   return 0;
 }

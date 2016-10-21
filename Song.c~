@@ -9,7 +9,7 @@ char print_node(node* n){
     return 1;
 }
 char print_list(node* n){
-  if(*n){
+  if(n){
     print_node(n);
     return print_list(n->next);
   }
@@ -26,6 +26,10 @@ node* insert_front(node* front, char* name, char* artist){
 
 node* insert(node* front, char* name, char* artist){
   node* i = front;
+  if(i==NULL){
+    printf("test\n");
+    insert_front(front, name, artist);
+  }
   while((i -> next) && *(i->next->name)<*name){
     i=i->next;
   }
@@ -64,7 +68,6 @@ int len(node* front){
 
 node* random_node(node* front){
   int i = rand()%len(front);
-  printf("i: %d\n", i);
   while(i){
     front=front->next;
     i--;

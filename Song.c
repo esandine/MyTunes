@@ -21,11 +21,16 @@ node* insert_front(node* front, char* name, char* artist){
   strcpy(n->name, name);
   strcpy(n->artist, artist);
   n->next=front;
+
   return n;
 }
 
 node* insert(node* front, char* name, char* artist){
   node* i = front;
+  printf("TEST\n");
+  if(i==NULL){
+    insert_front(front, name, artist);
+  }
   while((i -> next) && *(i->next->name)<*name){
     i=i->next;
   }
@@ -64,7 +69,6 @@ int len(node* front){
 
 node* random_node(node* front){
   int i = rand()%len(front);
-  printf("i: %d\n", i);
   while(i){
     front=front->next;
     i--;
