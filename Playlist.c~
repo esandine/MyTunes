@@ -1,24 +1,28 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "Playlist.h"
 
-char delete(){
-  node* i;
-  for(i = Playlist, i<Playlist+26, i++){
-    i=0;
-  }
+char delete_playlist(){
+  int i;
+  for(i=0;i<26;i++){
+    strcpy(Playlist[i].name,"Skip");
+    Playlist[i].next=NULL;
+}
+
+  return 0;
 }
 node* add_song(char* name, char* artist){
-  return insert(Playlist+*name-97, name, artist);
+  return insert((Playlist+*name-97), name, artist);
 }
 node* find_song(char* name){
-  return findSong(Playlist+*name-97, name);
+  return findSong((Playlist+*name-97), name);
 }
 node* find_artist(char* artist){
   char i;
   node* n;
   while(i<26){
-    n = findArtist(Playlist+i, artist);
+    n = findArtist((Playlist+i), artist);
     if(n){
       return n;
     }
@@ -28,14 +32,14 @@ node* find_artist(char* artist){
 }
 char print_letter(char letter){
   printf("Printing: %c\n", letter);
-  return print_list(Playlist+letter-97);
+  return print_list((Playlist+letter-97));
 }
 char print_artist(char* artist){
   int i;
   node* n;
   printf("Artist: %s\n\n",artist);
   for(i=0; i<26; i++){
-    n = findArtist(Playlist+i, artist);
+    n = findArtist((Playlist+i), artist);
     while(n){
       print_node(n);
       n=findArtist(n->next, artist);
@@ -43,19 +47,13 @@ char print_artist(char* artist){
   }
   return 1;
 }
-int numSongs(){
-  int retVal = 0;//number of songs
-  int counter = 0;//keeps track of letter
-  node* n = Playlist;
-  while(counter < 25 || n){
-    if(n){
-      n=n->next;
-      retVal++;
-    }
-    else{
-      counter++;
-      n=Playlist+counter;
-    }
+char shuffle(char songs){
+  while(songs){
+    int letter = rand()%26;//assumes roughly equal amount of songs each letter
+    print_node(random_node((Playlist+letter)->next));
+    songs--;
   }
-  return retVal;
+  return 0;
 }
+
+

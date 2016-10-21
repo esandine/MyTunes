@@ -55,5 +55,7 @@ char shuffle(char songs){
   }
   return 0;
 }
-
+char delete(char* name){
+  remove_node(find_song(name));
+}
 

@@ -42,5 +42,7 @@ int main(){
   print_artist("elyartist2");
   printf("Shufflin'/n");
   shuffle(10);
+  delete("elysong2");
+  print_letter("e");
   return 0;
 }
