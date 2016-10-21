@@ -1,16 +1,17 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "Playlist.h"
 
-/*char delete_playlist(){
+char delete_playlist(){
   int i;
   for(i=0;i<26;i++){
-    printf("TEST\n");
-    Nums[i]=0;
-  }
+    strcpy(Playlist[i].name,"Skip");
+    Playlist[i].next=NULL;
+}
 
   return 0;
-  }*/
+}
 node* add_song(char* name, char* artist){
   return insert((Playlist+*name-97), name, artist);
 }
@@ -49,7 +50,7 @@ char print_artist(char* artist){
 char shuffle(char songs){
   while(songs){
     int letter = rand()%26;//assumes roughly equal amount of songs each letter
-    print_node(random_node(Playlist+letter));
+    print_node(random_node((Playlist+letter)->next));
     songs--;
   }
   return 0;
