@@ -27,7 +27,6 @@ node* insert_front(node* front, char* name, char* artist){
 
 node* insert(node* front, char* name, char* artist){
   node* i = front;
-  printf("TEST\n");
   if(i==NULL){
     insert_front(front, name, artist);
   }
