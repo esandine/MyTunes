@@ -56,6 +56,7 @@ char shuffle(char songs){
   return 0;
 }
 char delete(char* name){
-  remove_node(find_song(name));
+  remove_node(&Playlist[*name-97],find_song(name));
+  return 0;
 }
 

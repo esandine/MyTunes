@@ -43,6 +43,6 @@ int main(){
   printf("Shufflin'/n");
   shuffle(10);
   delete("elysong2");
-  print_letter("e");
+  print_letter('e');
   return 0;
 }
